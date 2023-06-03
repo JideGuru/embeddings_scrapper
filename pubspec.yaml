@@ -1,0 +1,17 @@
+name: embeddings_scrapper
+description: A sample command-line application.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  # path: ^1.8.0
+  http: ^0.13.6
+  dotenv: ^4.1.0
+  html: ^0.15.3
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
