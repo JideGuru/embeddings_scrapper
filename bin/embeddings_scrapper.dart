@@ -10,14 +10,13 @@ import 'package:html/parser.dart'; // Contains HTML parsers to generate a Docume
 import 'package:html/dom.dart'; // Contains DOM related classes for extracting data from elements
 
 void main(List<String> arguments) async {
-  HtmlEscape htmlEscape = const HtmlEscape();
   var env = DotEnv(includePlatformEnvironment: true)..load();
   final openAIKey = env['OPENAIKEY'];
   final randomPhraseUrl =
       'https://www.coolgenerator.com/random-phrase-generator'; // https://www.coolgenerator.com/recipe-generator
   final res = await http.get(Uri.parse(randomPhraseUrl));
   var document = parse(res.body);
-  int currentFileCount = 40;
+  int currentFileCount = 1;
   List phrases = [];
   List<Element> phraseElements = document.getElementsByClassName('font-18');
   for (Element element in phraseElements) {
@@ -40,6 +39,8 @@ void main(List<String> arguments) async {
     }
 ''';
     currentFileCount += 1;
+    // Create assets folder
+    Directory('assets').create();
     File file = await File('assets/$currentFileCount.json').create();
     file.writeAsString(json);
   }
